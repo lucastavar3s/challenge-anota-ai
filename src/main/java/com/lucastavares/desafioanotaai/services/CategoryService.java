@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -44,5 +45,9 @@ public class CategoryService {
         Category category = repository.findById(id)
                 .orElseThrow(CategoryNotFoudException::new);
         repository.delete(category);
+    }
+
+    public Optional<Category> findById(String id) {
+        return repository.findById(id);
     }
 }
